@@ -5,13 +5,14 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "npx tsc --resolveJsonModule true --project .",
-    "start": "npm run build ; node dist/src/index.js",
+    "start": "ts-node src/index.ts",
     "ls": "ls",
     "test": "mocha -r ts-node/register test/*.ts"
   },
   "author": "Tyler Bryant",
   "license": "UNLICENSED",
   "dependencies": {
+    "commander": "8.3.0",
     "minimist": "^1.2.5",
     "nstrumenta": "^1.0.48",
     "serialport": "^9.2.8",

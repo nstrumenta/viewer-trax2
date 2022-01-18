@@ -13,7 +13,7 @@
     "quotes": ["error", "double"],
     "semi": ["error"],
     "indent": ["off"],
-    "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1}],
+    "@typescript-eslint/indent": ["error", 2, { "SwitchCase": 1 }],
     "no-multi-spaces": ["error"],
     "space-before-blocks": ["error"],
     "space-infix-ops": ["error"],

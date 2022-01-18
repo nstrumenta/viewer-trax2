@@ -39,7 +39,7 @@ export class Decoder {
       }
       return new DataView(bytes.buffer);
     })();
-    // console.log("GOT", dv)
+    console.log("GOT", dv.buffer);
 
     const decodeFrame = (index: number, frameLength: number) => {
       if (frameLength === 0) {
@@ -84,7 +84,8 @@ export class Decoder {
           const componentCount = dv.getUint8(index + 3);
           let i = 4;
           let currentComponent = 0;
-          while (i < frameLength && currentComponent < componentCount) {
+          let unknownComponentFound = false;
+          while (i < frameLength && currentComponent < componentCount && !unknownComponentFound) {
             const componentId = dv.getUint8(index + i);
             switch (componentId) {
               case Protocol.ComponentId.Heading:
@@ -137,7 +138,8 @@ export class Decoder {
                 i += 17;
                 break;
               default:
-                return false;
+                unknownComponentFound = true;
+                break;
             }
             currentComponent++;
           }
